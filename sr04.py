@@ -20,13 +20,13 @@ def get_distance():
   time.sleep(0.00001)
   GPIO.output(TRIG, GPIO.LOW)
   while GPIO.input(ECHO) == 0:
-    signaloff = time.time()
+    signaloff = time.perf_counter()
   while GPIO.input(ECHO) == 1:
-    signalon = time.time()
+    signalon = time.perf_counter()
   GPIO.output(LED, GPIO.LOW)
   timepassed = signalon - signaloff
-  distance = timepassed * 17000
-  return distance
+  distance = timepassed * 17150
+  return int(distance)
 def app(environ, start_response):
   status = '200 OK'
   headers = [
